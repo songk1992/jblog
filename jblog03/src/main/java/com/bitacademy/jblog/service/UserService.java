@@ -56,4 +56,13 @@ public class UserService {
 		
 		return ResultChecker;
 	}
+
+	/*
+	 *  제목	 : getUser
+	 *  설명	 : 유저 로그인시 id와 password 값으로 유저정보를 찾는다.
+	 * 
+	 */
+	public UserVo getUser(UserVo userVo) {
+		return userRepository.findByIdAndPassword(userVo);
+	}
 }

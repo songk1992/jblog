@@ -11,21 +11,36 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/{id:(?!assets).*}")
 public class BlogController {
 
-	@ResponseBody
 	@RequestMapping({"", "/{category}", "/{category}/{post}" } )
 	public String index(
 		@PathVariable String id,
 		@PathVariable Optional<Long> category,
 		@PathVariable Optional<Long> post) {
-		System.out.println(id + ":" + category + ":" + post);
+		String path_str = id;
+		
+		// 해당 유저가 존재 하는지 확인
+		
+		// 존재 하지 않으면 
 		
 		
 		
+		if(category.isPresent()) {
+			path_str += "/" + category;
+			if(post.isPresent()) {
+				path_str += "/" + post;
+			}
+		}else {
+			
+			
+			
+			
+			return "blog/blog-main";
+		}
 		
-		
-		
-		return "main/index";
+		return "str";
 	}
+	
+	
 
 	
 }

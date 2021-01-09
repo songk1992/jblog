@@ -40,4 +40,11 @@ public class UserController {
 	public String joinSuccess() {
 		return "user/joinsuccess";
 	}
+	
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login() {
+		return "user/login";
+	}
+	
+	
 }
