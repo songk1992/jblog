@@ -3,5 +3,12 @@
 
 <mapper namespace="post">
 
+<insert id="createNewPost" parameterType="postVo">
+<![CDATA[
+insert into post 
+values(null, #{title }, #{contents }, now(), #{categoryNo })
+]]>
+</insert>
+
 
 </mapper>

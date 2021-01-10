@@ -15,10 +15,9 @@
 </head>
 <body>
 
-
-<div class="center-content">
-	<h1 class="logo">JBlog</h1>
-	<ul class="menu">
+<div id="header">
+	<h1>Spring 이야기</h1>
+	<ul>
 		<c:choose>
 			<c:when test="${empty authUser }">
 				<li><a
@@ -29,7 +28,7 @@
 			<c:otherwise>
 				<li><a
 					href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath }/${authUser.name}">내블로그</a></li>
+				<li><a href="${pageContext.request.contextPath }/${authUser.name}/basic">블로그 관리</a></li>
 				<li>${authUser.name}</li>
 			</c:otherwise>
 		</c:choose>

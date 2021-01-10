@@ -43,8 +43,8 @@ public class UserService {
 		blogVo.setTitle(userVo.getName() + "블로그");
 		blogVo.setLogo("default-logo.jpg");
 		categoryVo.setId(userVo.getId());
-		categoryVo.setName("기본카테고리");
-		categoryVo.setDesc("기본카테고리");
+		categoryVo.setName("기본설정");
+		categoryVo.setDesc("기본설정");
 		
 
 
