@@ -1,6 +1,8 @@
 package com.bitacademy.jblog.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +50,18 @@ public class BlogController {
 		return "blog/blog-admin-basic";
 	}
 	
+	
+	
+	/*
+	 *  CategoryVo 와 해당 페이지 개수를 가지고 옴
+	 */
 	@Auth
-	@RequestMapping("/category")
-	public String category() {
-		return "blog/blog-admin-category";
-	}
+	@RequestMapping(value="/category", method=RequestMethod.GET)
+		public String category(@PathVariable String id, Model model) {
+			Map<String, Object> map = blogService.getCategoryListAndCountPages(id);
+			model.addAttribute("map", map);
+			return "blog/blog-admin-category";
+		}
 	
 	@Auth
 	@RequestMapping(value="/write", method=RequestMethod.GET)

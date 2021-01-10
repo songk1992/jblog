@@ -10,5 +10,12 @@ values(null, #{title }, #{contents }, now(), #{categoryNo })
 ]]>
 </insert>
 
+<select id="getCountPost" parameterType="categoryVo" resultType="long">
+<![CDATA[
+select count(no) as noOfPostPerCategory
+from post
+where category_no = #{no };
+]]>
+</select>
 
 </mapper>

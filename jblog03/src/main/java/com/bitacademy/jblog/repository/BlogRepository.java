@@ -1,6 +1,7 @@
 package com.bitacademy.jblog.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class BlogRepository {
 	public List<CategoryVo> getCategoryList(String id) {
 		return sqlSession.selectList("category.getCategoryList", id);
 	}
+
+	public Long getCountPost(CategoryVo categoryVo) {
+		return sqlSession.selectOne("post.getCountPost", categoryVo);
+	}
+
 
 }
