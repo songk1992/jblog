@@ -22,7 +22,7 @@ import com.bitacademy.jblog.vo.PostVo;
 public class BlogService {
 	
 	private static final String SAVE_PATH = "/jblog-uploads";
-	private static final String URL_BASE = "/images";
+	private static final String URL_BASE = "/assets/images/";
 
 	@Autowired
 	private BlogRepository blogRepository;
