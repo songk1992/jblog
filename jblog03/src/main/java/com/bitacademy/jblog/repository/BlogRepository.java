@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
+import com.bitacademy.jblog.vo.UserVo;
 
 @Repository
 public class BlogRepository {
@@ -47,6 +48,18 @@ public class BlogRepository {
 
 	public int updateBlogInfo(BlogVo blogVo) {
 		return sqlSession.update("blog.updateBlogInfo", blogVo);
+	}
+
+	public List<BlogVo> searchBlog(String keyword) {
+		return sqlSession.selectList("blog.searchBlog", keyword);
+	}
+
+	public List<CategoryVo> searchCategory(String keyword) {
+		return sqlSession.selectList("category.searchCategory", keyword);
+	}
+
+	public List<UserVo> searchUser(String keyword) {
+		return sqlSession.selectList("user.searchUser", keyword);
 	}
 
 

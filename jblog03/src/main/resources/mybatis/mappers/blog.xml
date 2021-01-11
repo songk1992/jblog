@@ -3,27 +3,36 @@
 
 <mapper namespace="blog">
 <insert id="insertBlog" parameterType="blogVo">
-<![CDATA[
-insert into blog
-values(#{id }, #{title }, #{logo })
-]]>
+	<![CDATA[
+	insert into blog
+	values(#{id }, #{title }, #{logo })
+	]]>
 </insert>
 
 <select id='getLogoPathAndTitle' parameterType='string' resultType='BlogVo'>
-<![CDATA[
-select title, logo
-from blog 
-where id = #{id }
-]]>
+	<![CDATA[
+	select title, logo
+	from blog 
+	where id = #{id }
+	]]>
 </select>
 
 <update id="updateBlogInfo" parameterType='blogVo'>
-<![CDATA[
-update blog
-set title = #{title }, logo = #{logo }
-where id = #{id };
-]]>
+	<![CDATA[
+	update blog
+	set title = #{title }, logo = #{logo }
+	where id = #{id };
+	]]>
 </update>
 
+<select id='searchBlog' parameterType="string" resultType='blogVo'>
+	<![CDATA[
+	select id, title
+	from blog
+	where 
+	(blog.title REGEXP #{_keyword })
+	order by title desc
+	]]>
+</select>
 
 </mapper>

@@ -26,4 +26,20 @@ where c.id = #{id };
 ]]>
 </select>
 
+<select id='searchPost' parameterType="string" resultType='postCategoryVo'>
+	<![CDATA[
+	select distinct p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, ca.id as id
+	from post p, category ca
+	where p.category_no = ca.no and
+    (p.title REGEXP #{_keyword }
+	or p.contents REGEXP #{_keyword }
+	)
+	order by p.reg_date desc;
+	]]>
+</select>
+
+
+
+
+
 </mapper>

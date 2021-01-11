@@ -19,4 +19,16 @@
 		]]>					
 	</select>
 	
+	<select id='searchUser' parameterType="string" resultType='userVo'>
+		<![CDATA[
+		select id, name
+		from user
+		where 
+		(user.name REGEXP #{_keyword }
+		or user.id REGEXP #{_keyword }
+		)
+		order by id desc
+		]]>
+	</select>
+
 </mapper>
