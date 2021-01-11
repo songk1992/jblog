@@ -33,12 +33,22 @@ public class BlogController {
 			Model model) {
 
 		model.addAttribute(id);
-
-		Map<String, Object> map = blogService.getCategoryListAndGetPostList(id);
-		model.addAttribute("map", map);
 		
-		model.addAttribute("category", category.get());
-		model.addAttribute("post", post.get());
+		Map<String, Object> map = blogService.getCategoryListAndGetPostList(id);
+		
+		if (category.isEmpty()) {
+			model.addAttribute("category", category);
+		}else {
+			map.put("category", category.get());
+		}
+		
+		if (post.isEmpty()) {
+			map.put("post", null);
+		}else {
+			map.put("post", post.get());
+		}
+		
+		model.addAttribute("map", map);
 		
 		return "blog/blog-main";
 	}
