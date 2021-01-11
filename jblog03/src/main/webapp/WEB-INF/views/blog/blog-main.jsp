@@ -71,7 +71,7 @@
 
 		<div id="extra">
 			<div class="blog-logo">
-				<img src="${pageContext.request.contextPath}${map.blogVo.logo }">
+				<img src="${pageContext.request.contextPath }${map.blogVo.logo }" style="width:150px"><br>
 			</div>
 		</div>
 

@@ -25,7 +25,8 @@
 					href="${pageContext.request.contextPath }/${authUser.id}/write">글작성</a></li>
 					
 				</ul>
-				<form action="" method="post">
+				<form action="${pageContext.request.contextPath }/${authUser.id}/updateBlogInfo" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="id" value="${authUser.id}">
 	 		      	<table class="admin-config">
 			      		<tr>
 			      			<td class="t">블로그 제목</td>
@@ -33,7 +34,7 @@
 			      		</tr>
 			      		<tr>
 			      			<td class="t">로고이미지</td>
-			      			<td><img src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg"></td>      			
+			      			<td><img src="${pageContext.request.contextPath}${url }"></td>      			
 			      		</tr>      		
 			      		<tr>
 			      			<td class="t">&nbsp;</td>

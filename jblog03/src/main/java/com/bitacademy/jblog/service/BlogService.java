@@ -1,12 +1,17 @@
 package com.bitacademy.jblog.service;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.jblog.repository.BlogRepository;
 import com.bitacademy.jblog.vo.BlogVo;
@@ -15,6 +20,9 @@ import com.bitacademy.jblog.vo.PostVo;
 
 @Service
 public class BlogService {
+	
+	private static final String SAVE_PATH = "/jblog-uploads";
+	private static final String URL_BASE = "/images";
 
 	@Autowired
 	private BlogRepository blogRepository;
@@ -75,6 +83,59 @@ public class BlogService {
 
 	public BlogVo getLogoPathAndTitle(String id) {
 		return blogRepository.getLogoPathAndTitle(id);
+	}
+
+	public int updateBlogInfo(BlogVo blogVo) {
+		return blogRepository.updateBlogInfo(blogVo);
+		
+	}
+
+	public String restore(MultipartFile multipartFile) {
+		
+		String url = "";
+		
+		try {
+		
+		String originFilename = multipartFile.getOriginalFilename();
+		String extName = originFilename.substring(originFilename.lastIndexOf('.')+1);
+		String saveFilename = genSaveFilename(extName);
+		
+		Long fileSize = multipartFile.getSize();
+		
+		System.out.print("########" + originFilename);
+		System.out.print("########" + saveFilename);
+		System.out.print("########" + fileSize);
+		
+		
+		
+		byte[] fileData = multipartFile.getBytes();
+		OutputStream os = new FileOutputStream(SAVE_PATH + "/" + saveFilename);
+		os.write(fileData);
+		os.close();
+		
+		url = URL_BASE + "/" + saveFilename;
+		
+		} catch (IOException e) {
+			throw new RuntimeException("file upload error : " + e);
+		}
+		return url;
+	}
+	
+	private String genSaveFilename(String extName) {
+		String filename = "";
+		
+		Calendar calendar = Calendar.getInstance();
+		filename += calendar.get(Calendar.YEAR);
+		filename += calendar.get(Calendar.MONTH);
+		filename += calendar.get(Calendar.DATE);
+		filename += calendar.get(Calendar.HOUR);
+		filename += calendar.get(Calendar.MINUTE);
+		filename += calendar.get(Calendar.SECOND);
+		filename += calendar.get(Calendar.MILLISECOND);
+		
+		filename += ("." + extName);
+		
+		return filename;
 	}
 
 }

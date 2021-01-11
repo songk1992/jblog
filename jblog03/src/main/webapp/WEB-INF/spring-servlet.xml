@@ -18,6 +18,11 @@
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler/>
 	
+	<!-- resource mapping -->
+	<!-- images 가 location 으로 맵핑됨으로서 관리하기 편해진다 -->
+	<mvc:resources mapping="*/images/**" location="file:/jblog-uploads/" />
+
+	
 		<!-- Interceptors -->
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -51,4 +56,14 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.bitacademy.jblog.controller" />
 
+	<!-- 멀티파트 리졸버 -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 가능한 바이트크기 -->
+		<property name="maxUploadSize" value="52428800" />
+		<!-- 디스크에 임시 파일을 생성하기 전에 메모리에 보관할수있는 최대 바이트 크기 -->
+		<!-- property name="maxInMemorySize" value="52428800" /-->
+		<!-- defaultEncoding -->
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>	
 </beans>

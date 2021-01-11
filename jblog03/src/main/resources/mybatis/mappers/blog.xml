@@ -16,4 +16,14 @@ from blog
 where id = #{id }
 ]]>
 </select>
+
+<update id="updateBlogInfo" parameterType='blogVo'>
+<![CDATA[
+update blog
+set title = #{title }, logo = #{logo }
+where id = #{id };
+]]>
+</update>
+
+
 </mapper>

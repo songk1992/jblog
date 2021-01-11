@@ -45,5 +45,9 @@ public class BlogRepository {
 		return sqlSession.selectOne("blog.getLogoPathAndTitle", id);
 	}
 
+	public int updateBlogInfo(BlogVo blogVo) {
+		return sqlSession.update("blog.updateBlogInfo", blogVo);
+	}
+
 
 }
