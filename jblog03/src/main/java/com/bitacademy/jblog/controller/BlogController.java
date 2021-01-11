@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitacademy.jblog.service.BlogService;
+import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
 import com.bitacademy.security.Auth;
@@ -47,6 +48,12 @@ public class BlogController {
 		}else {
 			map.put("post", post.get());
 		}
+		
+		
+		
+		// 블로그 제목 + 블로그 로고 추가
+		BlogVo blogVo = blogService.getLogoPathAndTitle(id);
+		map.put("blogVo", blogVo);
 		
 		model.addAttribute("map", map);
 		

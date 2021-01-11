@@ -41,7 +41,7 @@ public class UserService {
 		
 		blogVo.setId(userVo.getId());
 		blogVo.setTitle(userVo.getName() + "블로그");
-		blogVo.setLogo("default-logo.jpg");
+		blogVo.setLogo("/assets/images/spring-logo.jpg");
 		categoryVo.setId(userVo.getId());
 		categoryVo.setName("기본설정");
 		categoryVo.setDesc("기본설정");

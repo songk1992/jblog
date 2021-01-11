@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitacademy.jblog.repository.BlogRepository;
+import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
 
@@ -70,6 +71,10 @@ public class BlogService {
 		map.put("postList", postList);
 		
 		return map;
+	}
+
+	public BlogVo getLogoPathAndTitle(String id) {
+		return blogRepository.getLogoPathAndTitle(id);
 	}
 
 }

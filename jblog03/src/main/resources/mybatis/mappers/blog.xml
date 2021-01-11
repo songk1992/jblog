@@ -8,4 +8,12 @@ insert into blog
 values(#{id }, #{title }, #{logo })
 ]]>
 </insert>
+
+<select id='getLogoPathAndTitle' parameterType='string' resultType='BlogVo'>
+<![CDATA[
+select title, logo
+from blog 
+where id = #{id }
+]]>
+</select>
 </mapper>

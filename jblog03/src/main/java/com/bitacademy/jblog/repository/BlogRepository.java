@@ -41,5 +41,9 @@ public class BlogRepository {
 		return sqlSession.selectList("post.getPostList", id);
 	}
 
+	public BlogVo getLogoPathAndTitle(String id) {
+		return sqlSession.selectOne("blog.getLogoPathAndTitle", id);
+	}
+
 
 }
