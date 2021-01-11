@@ -42,7 +42,11 @@
 						<td>${vo.desc }</td>
 						<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
 					</tr>
-					</c:forEach>				  
+					</c:forEach>
+					
+					
+					
+									  
 				</table>
       	
       			<form action="${pageContext.request.contextPath }/${authUser.id}/addcat" method="post">

@@ -32,14 +32,13 @@ public class BlogController {
 			@PathVariable Optional<Long> post, 
 			Model model) {
 
-		model.addAttribute("id", id);
+		model.addAttribute(id);
 
-		if (category.isPresent()) {
-			model.addAttribute("category", category);
-			if (post.isPresent()) {
-				model.addAttribute("post", post);
-			}
-		}
+		Map<String, Object> map = blogService.getCategoryListAndGetPostList(id);
+		model.addAttribute("map", map);
+		
+		model.addAttribute("category", category.get());
+		model.addAttribute("post", post.get());
 		
 		return "blog/blog-main";
 	}
@@ -68,12 +67,6 @@ public class BlogController {
 		blogService.writeCategory(categoryVo);
 		return "redirect:/blog";
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	@Auth

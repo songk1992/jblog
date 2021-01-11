@@ -37,5 +37,9 @@ public class BlogRepository {
 		return sqlSession.insert("category.insertCategory", categoryVo);
 	}
 
+	public List<PostVo> getPostList(String id) {
+		return sqlSession.selectList("post.getPostList", id);
+	}
+
 
 }

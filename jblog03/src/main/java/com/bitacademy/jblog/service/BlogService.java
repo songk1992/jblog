@@ -48,4 +48,28 @@ public class BlogService {
 		
 	}
 
+	public List<PostVo> getPostList(String id) {
+		return blogRepository.getPostList(id);
+	}
+
+	public Map<String, Object> getCategoryListAndGetPostList(String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		List<CategoryVo> catList = blogRepository.getCategoryList(id);
+		List<PostVo> postList = blogRepository.getPostList(id);
+		
+		for (CategoryVo categoryVo : catList) {
+			System.out.println(categoryVo.getName());
+		}
+
+		for (PostVo postVo : postList) {
+			System.out.println(postVo.getCategoryNo());
+		}
+		
+		map.put("catList", catList);
+		map.put("postList", postList);
+		
+		return map;
+	}
+
 }
