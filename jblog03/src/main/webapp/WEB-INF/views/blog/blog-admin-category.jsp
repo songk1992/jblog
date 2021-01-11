@@ -45,11 +45,14 @@
 					</c:forEach>				  
 				</table>
       	
+      			<form action="${pageContext.request.contextPath }/${authUser.id}/addcat" method="post">
       			<h4 class="n-c">새로운 카테고리 추가</h4>
 		      	<table id="admin-cat-add">
 		      		<tr>
 		      			<td class="t">카테고리명</td>
-		      			<td><input type="text" name="name"></td>
+		      			<td>
+		      			<input type="hidden" name="id" value="${authUser.id}">
+		      			<input type="text" name="name"></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
@@ -60,13 +63,11 @@
 		      			<td><input type="submit" value="카테고리 추가"></td>
 		      		</tr>      		      		
 		      	</table> 
+		      	</form>
 			</div>
 		</div>
-		<div id="footer">
-			<p>
-				<strong>Spring 이야기</strong> is powered by JBlog (c)2016
-			</p>
-		</div>
+		<!-- footer -->
+		<c:import url="/WEB-INF/views/blog/blog-template-footer.jsp" />
 	</div>
 </body>
 </html>

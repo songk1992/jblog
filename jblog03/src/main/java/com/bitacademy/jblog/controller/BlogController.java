@@ -63,6 +63,19 @@ public class BlogController {
 			return "blog/blog-admin-category";
 		}
 	
+	@RequestMapping("/addcat")
+	public String add(CategoryVo categoryVo) {
+		blogService.writeCategory(categoryVo);
+		return "redirect:/blog";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@Auth
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String write(@PathVariable String id, Model model) {

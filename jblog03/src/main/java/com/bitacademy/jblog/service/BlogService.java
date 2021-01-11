@@ -40,9 +40,12 @@ public class BlogService {
 		
 		map.put("countPost", countPost);
 		
-		
-		
 		return map;
+	}
+
+	public int writeCategory(CategoryVo categoryVo) {
+		return blogRepository.writeCategory(categoryVo);
+		
 	}
 
 }

@@ -33,5 +33,9 @@ public class BlogRepository {
 		return sqlSession.selectOne("post.getCountPost", categoryVo);
 	}
 
+	public int writeCategory(CategoryVo categoryVo) {
+		return sqlSession.insert("category.insertCategory", categoryVo);
+	}
+
 
 }
