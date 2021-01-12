@@ -1,5 +1,7 @@
 package com.bitacademy.jblog.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,10 @@ public class UserRepository {
 
 	public UserVo findByIdAndPassword(UserVo userVo) {
 		return sqlSession.selectOne("user.findByIdAndPassword", userVo);
+	}
+
+	public List<UserVo> searchUser(String keyword) {
+		return sqlSession.selectList("user.searchUser", keyword);
 	}
 
 }

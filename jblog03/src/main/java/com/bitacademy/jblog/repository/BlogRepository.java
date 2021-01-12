@@ -22,26 +22,6 @@ public class BlogRepository {
 		return sqlSession.insert("blog.insertBlog", blogVo);
 	}
 
-	public int createNewPost(PostVo postVo) {
-		return sqlSession.insert("post.createNewPost", postVo);
-	}
-
-	public List<CategoryVo> getCategoryList(String id) {
-		return sqlSession.selectList("category.getCategoryList", id);
-	}
-
-	public Long getCountPost(CategoryVo categoryVo) {
-		return sqlSession.selectOne("post.getCountPost", categoryVo);
-	}
-
-	public int writeCategory(CategoryVo categoryVo) {
-		return sqlSession.insert("category.insertCategory", categoryVo);
-	}
-
-	public List<PostVo> getPostList(String id) {
-		return sqlSession.selectList("post.getPostList", id);
-	}
-
 	public BlogVo getLogoPathAndTitle(String id) {
 		return sqlSession.selectOne("blog.getLogoPathAndTitle", id);
 	}
@@ -52,14 +32,6 @@ public class BlogRepository {
 
 	public List<BlogVo> searchBlog(String keyword) {
 		return sqlSession.selectList("blog.searchBlog", keyword);
-	}
-
-	public List<CategoryVo> searchCategory(String keyword) {
-		return sqlSession.selectList("category.searchCategory", keyword);
-	}
-
-	public List<UserVo> searchUser(String keyword) {
-		return sqlSession.selectList("user.searchUser", keyword);
 	}
 
 

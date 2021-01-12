@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bitacademy.jblog.repository.BlogRepository;
+import com.bitacademy.jblog.repository.CategoryRepository;
+import com.bitacademy.jblog.repository.PostRepository;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
@@ -27,24 +29,30 @@ public class BlogService {
 	@Autowired
 	private BlogRepository blogRepository;
 	
+	@Autowired
+	private PostRepository postRepository;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	public int writePost(PostVo postVo) {
-		return blogRepository.createNewPost(postVo);
+		return postRepository.createNewPost(postVo);
 	}
 
 	public List<CategoryVo> getCategoryList(String id) {
-		return blogRepository.getCategoryList(id);
+		return categoryRepository.getCategoryList(id);
 	}
 
 	public Map<String, Object> getCategoryListAndCountPages(String id) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		List<CategoryVo> list = blogRepository.getCategoryList(id);
+		List<CategoryVo> list = categoryRepository.getCategoryList(id);
 		map.put("list", list);
 		
 		List<Long> countPost = new ArrayList<Long>();
 		// 추후 마이바티스 for each 문으로 IO 한번에 하여 성능 향상
 		for (CategoryVo categoryVo : list) {
-			countPost.add(blogRepository.getCountPost(categoryVo));
+			countPost.add(categoryRepository.getCountPost(categoryVo));
 		}
 		
 		map.put("countPost", countPost);
@@ -53,19 +61,19 @@ public class BlogService {
 	}
 
 	public int writeCategory(CategoryVo categoryVo) {
-		return blogRepository.writeCategory(categoryVo);
+		return categoryRepository.writeCategory(categoryVo);
 		
 	}
 
 	public List<PostVo> getPostList(String id) {
-		return blogRepository.getPostList(id);
+		return postRepository.getPostList(id);
 	}
 
 	public Map<String, Object> getCategoryListAndGetPostList(String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		List<CategoryVo> catList = blogRepository.getCategoryList(id);
-		List<PostVo> postList = blogRepository.getPostList(id);
+		List<CategoryVo> catList = categoryRepository.getCategoryList(id);
+		List<PostVo> postList = postRepository.getPostList(id);
 		
 		for (CategoryVo categoryVo : catList) {
 			System.out.println(categoryVo.getName());

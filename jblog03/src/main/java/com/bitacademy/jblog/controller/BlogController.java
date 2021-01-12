@@ -96,6 +96,7 @@ public class BlogController {
 		return "redirect:/{id}";
 	}
 
+	@Auth
 	@RequestMapping(value = "/updateBlogInfo", method = RequestMethod.POST)
 	public String updateBlogInfo(@RequestParam(value = "logo-file") MultipartFile multipartFile, BlogVo blogVo) {
 
@@ -105,5 +106,7 @@ public class BlogController {
 		blogService.updateBlogInfo(blogVo);
 		return "redirect:/{id}";
 	}
+	
+	
 
 }

@@ -19,4 +19,12 @@ public class PostRepository {
 	public List<PostCategoryVo> searchPost(String keyword) {
 		return sqlSession.selectList("post.searchPost", keyword);
 	}
+	
+	public int createNewPost(PostVo postVo) {
+		return sqlSession.insert("post.createNewPost", postVo);
+	}
+	
+	public List<PostVo> getPostList(String id) {
+		return sqlSession.selectList("post.getPostList", id);
+	}
 }

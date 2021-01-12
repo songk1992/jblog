@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitacademy.jblog.repository.BlogRepository;
+import com.bitacademy.jblog.repository.CategoryRepository;
 import com.bitacademy.jblog.repository.PostRepository;
+import com.bitacademy.jblog.repository.UserRepository;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostCategoryVo;
@@ -24,8 +26,11 @@ public class MainService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	
-	
+	@Autowired
+	private CategoryRepository categoryRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	public Map<String, Object> findWithKeyWord(String keyword, String which) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -43,7 +48,7 @@ public class MainService {
 		}
 		else if(which.equals("tag"))
 		{
-			List<CategoryVo> list = blogRepository.searchCategory(keyword);
+			List<CategoryVo> list = categoryRepository.searchCategory(keyword);
 			map.put("list", list);
 			if(!list.isEmpty()) {
 				keyCounter = 3;
@@ -51,7 +56,7 @@ public class MainService {
 		}
 		else if(which.equals("blog-user"))
 		{
-			List<UserVo> list = blogRepository.searchUser(keyword);
+			List<UserVo> list = userRepository.searchUser(keyword);
 			map.put("list", list);
 			if(!list.isEmpty()) {
 				keyCounter = 5;
