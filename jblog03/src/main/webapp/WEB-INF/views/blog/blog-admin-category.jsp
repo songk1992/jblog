@@ -40,7 +40,12 @@
 						<td>${vo.name }</td>
 						<td>${map.countPost[loop.index] }</td>
 						<td>${vo.desc }</td>
-						<td><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></td>
+						
+						<td>
+						<c:if test="${map.countPost[loop.index] == 0 }">
+						<a href="${pageContext.request.contextPath }/${authUser.id}/deletecat?no=${vo.no }"><ion-icon name="trash-outline"></ion-icon></a>
+						</c:if>
+						</td>
 					</tr>
 					</c:forEach>
 					
@@ -73,5 +78,15 @@
 		<!-- footer -->
 		<c:import url="/WEB-INF/views/blog/blog-template-footer.jsp" />
 	</div>
+	
+	
+	
+	
+	
+		<!-- 이모티콘 -->
+	<!-- https://ionicons.com/usage#chevron-forward-outline -->
+	<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+	
+	
 </body>
 </html>

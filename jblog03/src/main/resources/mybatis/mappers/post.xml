@@ -40,6 +40,11 @@ order by p.reg_date;
 	]]>
 </select>
 
+<delete id='deleteEveryPostInCategory' parameterType="string">
+	<![CDATA[
+	DELETE FROM post WHERE category_no = #{catNo };
+	]]>
+</delete>
 
 
 

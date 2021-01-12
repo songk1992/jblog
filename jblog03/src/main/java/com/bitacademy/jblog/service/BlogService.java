@@ -74,15 +74,7 @@ public class BlogService {
 		
 		List<CategoryVo> catList = categoryRepository.getCategoryList(id);
 		List<PostVo> postList = postRepository.getPostList(id);
-		
-		for (CategoryVo categoryVo : catList) {
-			System.out.println(categoryVo.getName());
-		}
 
-		for (PostVo postVo : postList) {
-			System.out.println(postVo.getCategoryNo());
-		}
-		
 		map.put("catList", catList);
 		map.put("postList", postList);
 		
@@ -144,6 +136,16 @@ public class BlogService {
 		filename += ("." + extName);
 		
 		return filename;
+	}
+
+	// transaction 처리
+	public void deleteCategory(String catNo) {
+		int k = 0;
+		k = postRepository.deleteEveryPostInCategory(catNo);
+		k = categoryRepository.deleteCategorybyCatNo(catNo);
+		
+		return;
+		
 	}
 
 }

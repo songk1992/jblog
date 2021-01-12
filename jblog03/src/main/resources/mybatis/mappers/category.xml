@@ -32,6 +32,14 @@ order by reg_date desc
 	]]>
 </select>
 
+<delete id='deleteCategorybyCatNo' parameterType="string">
+	<![CDATA[
+	DELETE FROM category WHERE no = #{catNo };
+	]]>
+</delete>
+
+
+
 
 
 </mapper>

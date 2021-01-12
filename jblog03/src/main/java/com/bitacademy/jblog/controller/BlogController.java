@@ -75,9 +75,17 @@ public class BlogController {
 		return "blog/blog-admin-category";
 	}
 
+	@Auth
 	@RequestMapping("/addcat")
 	public String add(CategoryVo categoryVo) {
 		blogService.writeCategory(categoryVo);
+		return "redirect:/{id}";
+	}
+	
+	@Auth
+	@RequestMapping("/deletecat")
+	public String deleteCat(@RequestParam String no) {
+		blogService.deleteCategory(no);
 		return "redirect:/{id}";
 	}
 
