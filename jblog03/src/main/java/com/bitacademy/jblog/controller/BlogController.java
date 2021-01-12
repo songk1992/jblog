@@ -34,6 +34,13 @@ public class BlogController {
 
 		Map<String, Object> map = blogService.getCategoryListAndGetPostList(id);
 
+		// 아이디가 존재하는지 확인
+		int blogExist = blogService.idExist(id);
+		if(blogExist==0) {
+			return "error/404";
+		}
+		
+		
 		if (category.isEmpty()) {
 			map.put("category", null);
 		} else {

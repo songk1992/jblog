@@ -31,4 +31,17 @@
 		]]>
 	</select>
 
+	<select id="idExist" parameterType="string" resultType='int'>
+		<![CDATA[
+		select count(*) 
+		from user
+		where id = #{user_id }
+		]]>
+	</select>
+
+
+
+
+
+
 </mapper>

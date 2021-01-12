@@ -1,8 +1,18 @@
 package com.bitacademy.jblog.vo;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserVo {
+	
+@NotEmpty
+@Length(min = 2, max = 8)
 private String id;
+
+@NotEmpty
 private String name;
+
+@NotEmpty
 private String password;
 private String regDate;
 public String getId() {

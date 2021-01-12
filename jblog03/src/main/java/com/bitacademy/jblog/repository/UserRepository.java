@@ -26,4 +26,8 @@ public class UserRepository {
 		return sqlSession.selectList("user.searchUser", keyword);
 	}
 
+	public int idExist(String user_id) {
+		return sqlSession.selectOne("user.idExist", user_id);
+	}
+
 }

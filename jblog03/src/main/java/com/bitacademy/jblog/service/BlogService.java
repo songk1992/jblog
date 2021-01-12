@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bitacademy.jblog.repository.BlogRepository;
 import com.bitacademy.jblog.repository.CategoryRepository;
 import com.bitacademy.jblog.repository.PostRepository;
+import com.bitacademy.jblog.repository.UserRepository;
 import com.bitacademy.jblog.vo.BlogVo;
 import com.bitacademy.jblog.vo.CategoryVo;
 import com.bitacademy.jblog.vo.PostVo;
@@ -34,6 +35,9 @@ public class BlogService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	public int writePost(PostVo postVo) {
 		return postRepository.createNewPost(postVo);
@@ -153,6 +157,10 @@ public class BlogService {
 
 	public PostVo getPostfromPosNo(String PosNo) {
 		return postRepository.getPostfromPosNo(PosNo);
+	}
+
+	public int idExist(String user_id) {
+		return userRepository.idExist(user_id);
 	}
 
 }
