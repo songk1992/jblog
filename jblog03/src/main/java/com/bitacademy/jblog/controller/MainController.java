@@ -1,6 +1,5 @@
 package com.bitacademy.jblog.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bitacademy.jblog.service.MainService;
-import com.bitacademy.jblog.vo.BlogVo;
-import com.bitacademy.jblog.vo.CategoryVo;
-import com.bitacademy.jblog.vo.PostVo;
-import com.bitacademy.jblog.vo.UserVo;
 
 @Controller
 public class MainController {

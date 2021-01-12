@@ -143,9 +143,16 @@ public class BlogService {
 		int k = 0;
 		k = postRepository.deleteEveryPostInCategory(catNo);
 		k = categoryRepository.deleteCategorybyCatNo(catNo);
-		
 		return;
 		
+	}
+
+	public CategoryVo getCategoryfromCatNo(String CatNo) {
+		return categoryRepository.getCategoryfromCatNo(CatNo);
+	}
+
+	public PostVo getPostfromPosNo(String PosNo) {
+		return postRepository.getPostfromPosNo(PosNo);
 	}
 
 }

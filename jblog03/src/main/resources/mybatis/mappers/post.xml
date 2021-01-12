@@ -46,7 +46,13 @@ order by p.reg_date;
 	]]>
 </delete>
 
-
+<select id='getPostfromPosNo' parameterType="string" resultType='postVo'>
+	<![CDATA[
+	select no, title, contents, reg_date as regDate, category_no as CategoryNo
+	from post
+	where no = #{posNo };
+	]]>
+</select>
 
 
 </mapper>

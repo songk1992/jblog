@@ -1,6 +1,5 @@
 package com.bitacademy.jblog.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -36,17 +35,23 @@ public class BlogController {
 		Map<String, Object> map = blogService.getCategoryListAndGetPostList(id);
 
 		if (category.isEmpty()) {
-			model.addAttribute("category", category);
+			map.put("category", null);
 		} else {
+			
 			map.put("category", category.get());
-		}
+			CategoryVo categoryVo = blogService.getCategoryfromCatNo(String.valueOf(category.get()));	
+			map.put("categoryVo", categoryVo);
+			
+			if (post.isEmpty()) {
+				map.put("post", null);
+				
+			} else {
+				PostVo postVo = blogService.getPostfromPosNo(String.valueOf(post.get()));	
+				map.put("postVo", postVo);
+				map.put("post", post.get());
+			}
 
-		if (post.isEmpty()) {
-			map.put("post", null);
-		} else {
-			map.put("post", post.get());
 		}
-
 		// 블로그 제목 + 블로그 로고 추가
 		BlogVo blogVo = blogService.getLogoPathAndTitle(id);
 		map.put("blogVo", blogVo);

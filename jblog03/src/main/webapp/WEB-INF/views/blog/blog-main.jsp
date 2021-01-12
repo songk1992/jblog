@@ -21,16 +21,16 @@
 		
 		<c:if test="${ not empty map.category }">
 			<c:if test="${ not empty map.post }">	
-				<h4>${map.postList[map.post].title}</h4>
+				<h4>${map.postVo.title}</h4>
 				<p>
-					${map.postList[map.post].contents}
+					${map.postVo.contents}
 				<p>
 			</c:if>
 			
 			<c:if test="${ empty map.post }">	
-				<h4>${map.catList[map.category].name}</h4>
+				<h4>${map.categoryVo.name}</h4>
 				<p>
-					${map.catList[map.category].desc}
+					${map.categoryVo.desc}
 				<p>
 			</c:if>
 		</c:if>
@@ -62,7 +62,7 @@
 				</div>
 				<ul class="blog-list">
 				<c:forEach items='${map.postList }' var='postVo' varStatus='status'>
-					<li><a href="${pageContext.request.contextPath }/${id}/${postVo.categoryNo }/${postVo.no - 2 }">
+					<li><a href="${pageContext.request.contextPath }/${id}/${postVo.categoryNo }/${postVo.no }">
 					${postVo.title }</a> <span>${postVo.regDate }</span>	</a></li>
     			</c:forEach>
 				</ul>
@@ -80,7 +80,7 @@
 			<ul>
 			
 				<c:forEach items='${map.catList }' var='catVo' varStatus='loop'>
-					<li><a href="${pageContext.request.contextPath }/${id}/${loop.index }">${catVo.name }</a></li>
+					<li><a href="${pageContext.request.contextPath }/${id}/${catVo.no }">${catVo.name }</a></li>
     			</c:forEach>
 			</ul>
 		</div>

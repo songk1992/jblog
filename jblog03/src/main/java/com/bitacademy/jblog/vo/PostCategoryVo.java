@@ -3,6 +3,7 @@ package com.bitacademy.jblog.vo;
 public class PostCategoryVo {
 	private Long no;
 	private String title;
+	private String desc;
 	private String contents;
 	private String regDate;
 	private Long categoryNo;
@@ -18,6 +19,12 @@ public class PostCategoryVo {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	public String getContents() {
 		return contents;
@@ -45,10 +52,10 @@ public class PostCategoryVo {
 	}
 	@Override
 	public String toString() {
-		return "PostCategoryVo [no=" + no + ", title=" + title + ", contents=" + contents + ", regDate=" + regDate
-				+ ", categoryNo=" + categoryNo + ", id=" + id + "]";
+		return "PostCategoryVo [no=" + no + ", title=" + title + ", desc=" + desc + ", contents=" + contents
+				+ ", regDate=" + regDate + ", categoryNo=" + categoryNo + ", id=" + id + "]";
 	}
-	
+
 	
 	
 }

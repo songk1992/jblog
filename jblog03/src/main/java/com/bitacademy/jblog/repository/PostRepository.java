@@ -31,4 +31,8 @@ public class PostRepository {
 	public int deleteEveryPostInCategory(String catNo) {
 		return sqlSession.delete("post.deleteEveryPostInCategory", catNo);
 	}
+
+	public PostVo getPostfromPosNo(String posNo) {
+		return sqlSession.selectOne("post.getPostfromPosNo", posNo);
+	}
 }

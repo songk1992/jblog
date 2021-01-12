@@ -38,6 +38,9 @@ public class CategoryRepository {
 
 	public int deleteCategorybyCatNo(String catNo) {
 		return sqlSession.delete("category.deleteCategorybyCatNo", catNo);
-		
+	}
+
+	public CategoryVo getCategoryfromCatNo(String catNo) {
+		return sqlSession.selectOne("category.getCategoryfromCatNo", catNo);
 	}
 }
