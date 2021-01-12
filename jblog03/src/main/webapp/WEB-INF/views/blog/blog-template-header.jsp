@@ -28,7 +28,7 @@
 			<c:otherwise>
 				<li><a
 					href="${pageContext.request.contextPath }/user/logout">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath }/${authUser.name}/basic">블로그 관리</a></li>
+				<li><a href="${pageContext.request.contextPath }/${authUser.id}/basic">블로그 관리</a></li>
 				<li>${authUser.name}</li>
 			</c:otherwise>
 		</c:choose>

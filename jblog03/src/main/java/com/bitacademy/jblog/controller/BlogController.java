@@ -58,7 +58,9 @@ public class BlogController {
 
 	@Auth
 	@RequestMapping("/basic")
-	public String basic() {
+	public String basic(@PathVariable String id, Model model) {
+		BlogVo blogVo = blogService.getLogoPathAndTitle(id);
+		model.addAttribute("blogVo", blogVo);
 		return "blog/blog-admin-basic";
 	}
 
@@ -100,14 +102,6 @@ public class BlogController {
 		System.out.println(blogVo.getTitle());
 		String url = blogService.restore(multipartFile);
 		blogVo.setLogo(url);
-
-		System.out.println(blogVo.getId());
-		System.out.println(blogVo.getId());
-		System.out.println(blogVo.getTitle());
-		System.out.println(blogVo.getTitle());
-		System.out.println(blogVo.getLogo());
-		System.out.println(blogVo.getLogo());
-
 		blogService.updateBlogInfo(blogVo);
 		return "redirect:/{id}";
 	}
