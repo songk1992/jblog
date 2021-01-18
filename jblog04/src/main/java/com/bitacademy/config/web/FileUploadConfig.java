@@ -12,9 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @PropertySource("classpath:com/bitacademy/jblog/config/web/properties/fileupload.properties")
-
-
-public class FileUploadConfig extends WebMvcConfigurerAdapter{
+public class FileUploadConfig extends WebMvcConfigurerAdapter {
 	
 	@Autowired
 	private Environment env;
@@ -25,17 +23,14 @@ public class FileUploadConfig extends WebMvcConfigurerAdapter{
 		multipartResolver.setMaxUploadSize(env.getProperty("fileupload.maxUploadSize", Long.class));
 		multipartResolver.setMaxInMemorySize(env.getProperty("fileupload.maxInMemorySize", Integer.class));
 		multipartResolver.setDefaultEncoding(env.getProperty("fileupload.defaultEncoding"));
+		
 		return multipartResolver;
 	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
 		registry
-		.addResourceHandler(env.getProperty("resourceMapping"))
-		.addResourceLocations("file:" + env.getProperty("fileupload.resourceLocations"));
+			.addResourceHandler(env.getProperty("fileupload.resourceMapping"))
+			.addResourceLocations("file:" + env.getProperty("fileupload.resourceLocations"));
 	}
-	
-	
-	
 }
