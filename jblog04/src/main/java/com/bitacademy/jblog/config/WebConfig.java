@@ -13,10 +13,7 @@ import com.bitacademy.config.web.SecurityConfig;
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan({"com.bitacademy.jblog.controller", "com.bitacademy.jblog.exception"})
-@Import({SecurityConfig.class, MvcConfig.class, MessageSourceConfig.class})
+@Import({SecurityConfig.class, MvcConfig.class, MessageSourceConfig.class, FileUploadConfig.class })
 public class WebConfig {
 
 }
-
-
-// TODO FileUploadConfig.class 기능 추가 
